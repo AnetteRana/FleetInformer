@@ -67,7 +67,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 1156bdbcd64874e4b935467567f77c75, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 9be6dd8baef1a8a4190d57edc884a8f1, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -150,7 +150,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletLifetime: 120
-  speed: 5
+  speed: 15
   hitSound: {fileID: 0}
 --- !u!212 &212483528483795066
 SpriteRenderer:

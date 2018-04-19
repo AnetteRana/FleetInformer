@@ -7,13 +7,6 @@ public class playerController : MonoBehaviour
 {
     public int health;
 
-    static public float minForwardSpeed;
-    public float currentForwardSpeed = minForwardSpeed;
-    public float maxForwardSpeed;
-
-    public float maxTurnSpeed;
-    public float curTurnSpeed;
-
     // engine lights
     public GameObject left;
     public GameObject right;
@@ -29,39 +22,18 @@ public class playerController : MonoBehaviour
 
     void Forward()
     {
-        float moveV = Input.GetAxis("Vertical");
-
         //forward movement
-        transform.Translate((Mathf.Exp(currentForwardSpeed) - 1) * Vector3.up * Time.deltaTime, Space.Self);
-        // pressing forward
+        float moveV = Input.GetAxis("Vertical");
+        transform.Translate(0, moveV / 3, 0, Space.Self);
+
+        // visual
         if (moveV > 0)
         {
-            // forward
-            //transform.Translate(currentForwardSpeed * Vector3.up * Time.deltaTime, Space.Self);
             forward.GetComponent<Renderer>().enabled = true;
-
-            // accelerate
-            if (currentForwardSpeed < maxForwardSpeed)
-            {
-                currentForwardSpeed = (currentForwardSpeed + 0.02f);
-            }
-        }
-        // pressing backward
-        else if (moveV < 0)
-        {
-            // break
-            //transform.Translate((currentForwardSpeed) * Vector3.up * Time.deltaTime, Space.Self);
-            forward.GetComponent<Renderer>().enabled = false;
-            currentForwardSpeed = (currentForwardSpeed - 0.02f);
         }
         else
         {
             forward.GetComponent<Renderer>().enabled = false;
-
-            if (currentForwardSpeed > minForwardSpeed)
-            {
-                currentForwardSpeed = (currentForwardSpeed - 0.02f);
-            }
         }
     }
 
@@ -77,12 +49,6 @@ public class playerController : MonoBehaviour
             right0.GetComponent<Renderer>().enabled = true;
             left.GetComponent<Renderer>().enabled = false;
             left0.GetComponent<Renderer>().enabled = false;
-
-            // right (negative speed)
-            if (curTurnSpeed < maxTurnSpeed)
-            {
-                curTurnSpeed = curTurnSpeed + 0.03f; ;
-            }
         }
         // A
         else if (moveH < 0)
@@ -92,12 +58,6 @@ public class playerController : MonoBehaviour
             left0.GetComponent<Renderer>().enabled = true;
             right.GetComponent<Renderer>().enabled = false;
             right0.GetComponent<Renderer>().enabled = false;
-
-            // left (positive)
-            if (curTurnSpeed > -maxTurnSpeed)
-            {
-                curTurnSpeed = curTurnSpeed - 0.03f;
-            }
         }
         else
         {
@@ -106,31 +66,10 @@ public class playerController : MonoBehaviour
             right0.GetComponent<Renderer>().enabled = false;
             left.GetComponent<Renderer>().enabled = false;
             left0.GetComponent<Renderer>().enabled = false;
-
-            // slow down turn
-            if (curTurnSpeed > 0)
-            {
-                curTurnSpeed = curTurnSpeed - (curTurnSpeed / 40);
-            }
-            else if (curTurnSpeed < 0)
-            {
-                curTurnSpeed = curTurnSpeed - (curTurnSpeed / 40);
-            }
-
         }
 
-        float test = 0;
-        if (curTurnSpeed < 0)
-        {
-            test = (curTurnSpeed * curTurnSpeed* curTurnSpeed);
-        }
-        else if (curTurnSpeed > 0)
-        {
-            test = (curTurnSpeed* curTurnSpeed* curTurnSpeed);
-        }
-
-        transform.Rotate(0, 0, -test);
-        print(test);
+        float moveV = Input.GetAxis("Vertical");
+        transform.Rotate(0, 0, (Mathf.Abs(moveV) *5 +1) * -moveH / 2);
     }
 
     // Use this for initialization

@@ -150,7 +150,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletLifetime: 120
-  speed: 5
+  speed: 15
   hitSound: {fileID: 0}
 --- !u!212 &212510703048724490
 SpriteRenderer:

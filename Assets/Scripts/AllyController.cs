@@ -104,11 +104,11 @@ public class AllyController : MonoBehaviour {
         }
 
 
-        if (false)
-        {
-            // turn right
-            transform.Rotate(0, 0, -1);
-        }
+        //if (false)
+        //{
+        //    // turn right
+        //    transform.Rotate(0, 0, -1);
+        //}
 
     }
 

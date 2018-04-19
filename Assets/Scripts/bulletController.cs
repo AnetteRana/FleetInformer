@@ -15,7 +15,7 @@ public class bulletController : MonoBehaviour
     private void Start()
     {
         cameraRef = GameObject.FindGameObjectWithTag("MainCamera");
-        hitSound = GetComponent<AudioSource>();
+        //hitSound = GetComponent<AudioSource>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
