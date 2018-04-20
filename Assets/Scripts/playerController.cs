@@ -85,7 +85,7 @@ public class playerController : MonoBehaviour
         if (health <= 0)
         {
             // GAME OVER
-            print("GAME OVER");
+            Application.LoadLevel("deathScene");
 
         }
 

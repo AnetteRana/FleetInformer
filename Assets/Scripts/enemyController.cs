@@ -21,12 +21,12 @@ public class enemyController : MonoBehaviour
 
     private int edgeCooldown = 0;
 
-//////////////////////////////////////////////
-    public void newGame()
-    {
+    public float boardWidth;
+    public float boardHeight;
 
-    }
+    //////////////////////////////////////////////
 
+    // stay within board
     void OnTriggerStay2D(Collider2D other)
     {
         if (other.gameObject.name == "Edge")
@@ -55,6 +55,25 @@ public class enemyController : MonoBehaviour
     {
         myRad = Instantiate(radiusPrefab, this.transform.position, this.transform.rotation, gameObject.transform);
         transform.Rotate(0.0f, 0.0f, Random.Range(0.0f, 360.0f));
+
+        // go to a random place without sight
+        bool searchingForPosition = true;
+        while (searchingForPosition)
+        {
+            transform.position = new Vector3(Random.Range(boardWidth, -boardWidth), Random.Range(boardHeight, -boardHeight), 0.0f);
+
+            // make sure enemy does not sense player or ally
+            if (hasTarget && (target != null))
+            {
+                
+            }
+            else
+            {
+                searchingForPosition = false;
+            }
+            
+
+        }
     }
 
     // Update is called once per frame

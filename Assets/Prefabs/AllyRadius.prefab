@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 58957716004779204}
   m_Layer: 0
   m_Name: AllyRadius
-  m_TagString: Untagged
+  m_TagString: Radius
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
